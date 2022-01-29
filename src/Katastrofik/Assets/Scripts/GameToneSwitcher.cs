@@ -5,10 +5,9 @@ using UnityEngine;
 public class GameToneSwitcher : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
+    private GameObject player;
     public Sprite lightSprite; // Dark Background
     public Sprite darkSprite; // Light Background
-
-    public Camera camera;
 
     public Color32 colorDark = new Color32(14, 14, 14, 0);
     public Color32 colorLight = new Color32(242, 233, 225, 0);
@@ -24,9 +23,10 @@ public class GameToneSwitcher : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        player = GameObject.FindWithTag("Player");
+        spriteRenderer = player.GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = lightSprite;
-        camera.backgroundColor = colorDark;
+        Camera.main.backgroundColor = colorDark;
         timerCountDownText.text = "";
     }
 
@@ -68,13 +68,13 @@ public class GameToneSwitcher : MonoBehaviour
         if (spriteRenderer.sprite == lightSprite) // Light Background
         {
             spriteRenderer.sprite = darkSprite;
-            camera.backgroundColor = colorLight;
+            Camera.main.backgroundColor = colorLight;
             isInLight = true;
         }
         else // Dark Background
         {
             spriteRenderer.sprite = lightSprite;
-            camera.backgroundColor = colorDark;
+            Camera.main.backgroundColor = colorDark;
             isInLight = false;
         }
     }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class NegativeEnergyMove : MonoBehaviour
@@ -40,5 +38,10 @@ public class NegativeEnergyMove : MonoBehaviour
     {
         Vector2 newPosition = (Vector2)transform.position + (direction * moveSpeed * Time.deltaTime); 
         rb.MovePosition(newPosition);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        print("collided");
     }
 }

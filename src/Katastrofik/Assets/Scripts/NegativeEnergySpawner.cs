@@ -7,13 +7,16 @@ public class NegativeEnergySpawner : MonoBehaviour
     public GameObject negativeEnergy;
     public int numberOfEnergies = 5;
 
+    private List<GameObject> negativeEnergies = new List<GameObject>();
+
     void Start()
     {
         for (int i = 0; i < numberOfEnergies; i++)
         {
             Vector2 spawnPosition = RandomSpawnPosition();
-            Debug.Log(spawnPosition);
-            Instantiate(negativeEnergy, spawnPosition, Quaternion.identity);
+            GameObject energy = Instantiate(negativeEnergy, spawnPosition, Quaternion.identity);
+            energy.tag = "NegativeEnergy";
+            negativeEnergies.Add(energy);
         }
     }
 
