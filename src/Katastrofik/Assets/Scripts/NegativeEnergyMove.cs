@@ -5,7 +5,7 @@ using UnityEngine;
 public class NegativeEnergyMove : MonoBehaviour
 {
 
-    public Transform player;
+    private Transform player;
     private Rigidbody2D rb;
 
     private Vector2 movement;
@@ -16,6 +16,7 @@ public class NegativeEnergyMove : MonoBehaviour
     void Start()
     {
         rb = this.GetComponent<Rigidbody2D>();
+        player = GameObject.FindWithTag("Player").transform;
     }
 
     // Update is called once per frame
